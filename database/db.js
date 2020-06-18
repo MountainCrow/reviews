@@ -52,5 +52,4 @@ const ReviewModel = mongoose.model('Review', reviewSchema);
 //   addFakeData();
 // }
 
-module.exports = ReviewModel;
-module.exports = db;
+module.exports = { ReviewModel, db };
