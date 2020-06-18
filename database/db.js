@@ -26,17 +26,28 @@ const reviewSchema = mongoose.Schema({
 // model
 const ReviewModel = mongoose.model('Review', reviewSchema);
 
-const addFakeData = () => {
-  const reviewObj = {};
-  reviewObj.stars = Math.ceil(Math.random() * 5);
-  reviewObj.postDate = moment(faker.date.past()).format('MMM Do YYYY');
-  reviewObj.title = faker.lorem.words();
-  reviewObj.description = faker.lorem.paragraph();
-  reviewObj.firstName = faker.name.firstName();
-  reviewObj.lastName = faker.name.lastName();
-  reviewObj.productType = faker.lorem.word();
+// const addFakeData = () => {
+//   const reviewObj = {};
+//   reviewObj.stars = Math.ceil(Math.random() * 5);
+//   reviewObj.postDate = moment(faker.date.past()).format('MMM Do YYYY');
+//   reviewObj.title = faker.fake('{{lorem.words}} {{commerce.productAdjective}}');
+//   reviewObj.description = faker.lorem.paragraph();
+//   reviewObj.firstName = faker.name.firstName();
+//   reviewObj.lastName = faker.name.lastName();
+//   reviewObj.productType = faker.lorem.word();
 
-  console.log(reviewObj);
-};
+//   const newReview = new ReviewModel(reviewObj);
+//   newReview.save((err, review) => {
+//     if (err) {
+//       console.log('There was an error saving your review to the DB');
+//     } else {
+//       return review;
+//     }
+//   });
 
-addFakeData();
+//   console.log(reviewObj);
+// };
+
+// for (let i = 0; i <= 99; i++) {
+//   addFakeData();
+// }
