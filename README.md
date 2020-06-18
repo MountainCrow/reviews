@@ -1,6 +1,6 @@
-# Project Name
+# FEC Reviews Module
 
-> Project description
+> Full Stack Reviews Module that uses stored reviews in a mongodb db to render to DOM.
 
 ## Related Projects
 
@@ -21,10 +21,7 @@
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+- Good Vibes
 
 ## Development
 
