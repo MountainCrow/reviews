@@ -15,7 +15,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
 
-let bad = app.get('/reviews', (req, res) => {
+// test this for return object type or length
+const reviewRoute = app.get('/reviews', (req, res) => {
   ReviewModel.find((err, results) => {
     if (err) {
       throw err;
