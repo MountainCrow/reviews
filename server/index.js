@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const ReviewModel = require('../database/db.js');
 
-const db = require('../database/db.js');
+// const db = require('../database/db.js');
 
 const PORT = 3003;
 
@@ -21,7 +21,7 @@ const reviewRoute = app.get('/reviews', (req, res) => {
     if (err) {
       throw err;
     } else {
-      console.log(results);
+      res.sendStatus(200);
       res.send(results);
     }
   }).limit(10);
@@ -31,3 +31,5 @@ const reviewRoute = app.get('/reviews', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+module.exports = reviewRoute;
