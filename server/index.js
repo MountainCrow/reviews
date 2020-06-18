@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
 
-app.get('/reviews', (req, res) => {
+let bad = app.get('/reviews', (req, res) => {
   ReviewModel.find((err, results) => {
     if (err) {
       throw err;
