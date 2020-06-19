@@ -29,7 +29,7 @@ class App extends React.Component {
     const { reviews } = this.state;
     return (
       <div id="main">
-        <h1> Working </h1>
+        <h1>Working</h1>
         <ReviewHead />
         <ReviewList allReviews={reviews || null} />
       </div>

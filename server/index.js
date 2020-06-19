@@ -27,8 +27,6 @@ const reviewRoute = app.get('/reviews', (req, res, next) => {
 
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+app.listen(PORT);
 
 module.exports = reviewRoute;
