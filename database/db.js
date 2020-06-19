@@ -51,3 +51,5 @@ const ReviewModel = mongoose.model('Review', reviewSchema);
 // for (let i = 0; i <= 99; i++) {
 //   addFakeData();
 // }
+
+module.exports = { ReviewModel };

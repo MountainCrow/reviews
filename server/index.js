@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const ReviewModel = require('../database/db.js');
+const { ReviewModel } = require('../database/db.js');
 
-const db = require('../database/db.js');
+// const db = require('../database/db.js');
 
 const PORT = 3003;
 
@@ -16,13 +16,14 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 
 // test this for return object type or length
-const reviewRoute = app.get('/reviews', (req, res) => {
+const reviewRoute = app.get('/reviews', (req, res, next) => {
   ReviewModel.find((err, results) => {
     if (err) {
       throw err;
     } else {
-      console.log(results);
+      res.status(200);
       res.send(results);
+      next();
     }
   }).limit(10);
 
@@ -31,3 +32,5 @@ const reviewRoute = app.get('/reviews', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+module.exports = reviewRoute;
