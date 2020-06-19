@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const faker = require('faker');
-const moment = require('moment');
+// const faker = require('faker');
+// const moment = require('moment');
 
-mongoose.connect('mongodb://localhost/fec', { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connect('mongodb://localhost/fec', { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connection.once('open', () => {
   console.log('Database Connected');
@@ -52,4 +52,4 @@ const ReviewModel = mongoose.model('Review', reviewSchema);
 //   addFakeData();
 // }
 
-module.exports = { ReviewModel };
+module.exports = { ReviewModel, db };
