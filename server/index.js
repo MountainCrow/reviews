@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const { ReviewModel, db } = require('../database/db.js');
 
-
 const PORT = 3003;
 
 const app = express();
