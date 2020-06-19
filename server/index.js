@@ -15,12 +15,14 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 
 // test this for return object type or length
-const reviewRoute = app.get('/reviews', (req, res) => {
+const reviewRoute = app.get('/reviews', (req, res, next) => {
   ReviewModel.find((err, results) => {
     if (err) {
       throw err;
     } else {
+      res.status(200);
       res.send(results);
+      next();
     }
   }).limit(10);
 
@@ -30,4 +32,4 @@ app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
 
-module.export = reviewRoute;
+module.exports = reviewRoute;
