@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReviewHead = (props) => (
+const ReviewHead = () => (
   <div>
     <h1>Reviews</h1>
     <div>

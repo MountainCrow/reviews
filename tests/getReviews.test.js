@@ -1,21 +1,23 @@
 /* eslint-disable */
 const supertest = require('supertest');
-const app = require('../server/index.js');
-const request = supertest(app);
+const helpers = require('./helpers.js');
 
 describe('Server Endpoints', () => {
 
-  it('should return an array of lenght 10', async done => {
-    const res = await request.get('/reviews')
+  it('should return an array of lenght 10', () => {
+   expect.assertions(1);
 
-    expect(res.body.length).toBe(10);
-    expect(res.status).toBe(200);
+   return helpers.fetchReviews()
+    .then(data => {
+      expect(data.length).toBe(10);
+    })
+    .catch(err => err);
 
-    done();
   });
+
 
 })
 
 
-// expect(res.body.length).toBe(10);
-//     done();
+
+

@@ -8,6 +8,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      reviews: '',
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -23,6 +24,7 @@ class App extends React.Component {
     request
       .then((allreviews) => this.setState({reviews: allreviews.data }))
       .catch((err) => { throw err; });
+
   }
 
   render() {

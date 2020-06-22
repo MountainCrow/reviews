@@ -1,25 +1,29 @@
 /* eslint-disable */
 
-/* Configure Enzyme */
-import { configure, shallow, mount, render } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({adapter: new Adapter() });
-
 import React from 'react';
-//import {render} from "@testing-library/react";
+import { shallow, mount, render } from 'enzyme';
 import App from "../client/components/App.jsx";
+// import ReviewHead from "../client/components/ReviewHead.jsx";
+import ReviewList from "../client/components/ReviewList.jsx";
+import ReviewHead from "../client/components/ReviewHead.jsx";
 
-describe('App React Component Testing', () => {
 
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<App />)
-  })
+describe('<App /> React Component Testing', () => {
 
-  test('render the initial value of state in a div', () => {
+  test('App renders text to the dom',  () => {
+    const wrapper = shallow(<App />);
     expect(wrapper.find('h1').text()).toBe('Working')
   });
-})
 
-// getByText gets the component and converts it to text
-// shallow creates an instance of the components
+  test('renders the review list to the dom', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find(ReviewList)).toHaveLength(1);
+  });
+
+  test('renders the review list to the dom', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find(ReviewHead)).toHaveLength(1);
+  });
+
+
+})
