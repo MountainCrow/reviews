@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const { ReviewModel, db } = require('../database/db.js');
 
-
 const PORT = 3003;
 
 const app = express();
@@ -15,7 +14,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 
 // test this for return object type or length
-const reviewRoute = app.get('/reviews', (req, res, next) => {
+const getReviews = app.get('/reviews', (req, res, next) => {
   ReviewModel.find((err, results) => {
     if (err) {
       throw err;
@@ -28,8 +27,6 @@ const reviewRoute = app.get('/reviews', (req, res, next) => {
 
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+app.listen(PORT);
 
-module.exports = reviewRoute;
+module.exports = { app, getReviews };

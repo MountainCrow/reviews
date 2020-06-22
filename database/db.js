@@ -5,7 +5,6 @@ const moment = require('moment');
 const db = mongoose.connect('mongodb://localhost/fec', { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connection.once('open', () => {
-  console.log('Database Connected');
 });
 
 mongoose.connection.on('error', console.error.bind(console, 'Connection Error'));
