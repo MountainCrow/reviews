@@ -3,6 +3,7 @@ import React from 'react';
 import Review from './Review.jsx';
 import styled from 'styled-components';
 import Slider from 'react-slick';
+import { SampleNextArrow, SamplePrevArrow } from './ReactSlick/Arrows.jsx'
 
 /* React Slick Styling */
 // import 'slick-carousel/slick/slick.css';
@@ -44,8 +45,21 @@ class ReviewList extends React.Component {
       dots:true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      draggable: true
-
+      draggable: true,
+      customPaging: i => (
+        <div
+          style={{
+            fontSize: "18px",
+            padding: "0 12px",
+            lineHeight: "18px",
+            verticalAlign: "middle",
+          }}
+        >
+        {i+1}
+        </div>
+      ),
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
     }
     return (
       <ReviewMain id="review-list">
