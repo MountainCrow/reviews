@@ -15,15 +15,9 @@ describe('Server Endpoints', () => {
 
   });
 
-<<<<<<< HEAD
-})
-
-
-=======
 
 })
 
 
 
 
->>>>>>> b8b554039a0ec0b023b7981d19c54bf7a1678fd5
