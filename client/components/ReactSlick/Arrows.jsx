@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
+/* eslint-disable */
+
+import React, { Component } from 'react';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -17,7 +18,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, position:"relative", left:"640px", top:"367px", background: "red", zIndex:"1"}}
+      style={{ ...style, position:"relative", left:"638px", top:"427px", background: "red", zIndex:"1"}}
       onClick={onClick}
     />
   );
