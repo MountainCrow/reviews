@@ -61,6 +61,7 @@ class Review extends React.Component {
 
     this.state = {
       rating: 0,
+      helpful: 0,
     }
 
     this.createStars = this.createStars.bind(this);
@@ -84,11 +85,16 @@ class Review extends React.Component {
     return store;
   }
 
+  handleClick(){
+    this.setState({helpful: this.state.helpful++})
+  }
+
+
 
   render(){
     const { stars, postDate, title, description, firstName, lastName } = this.props.allReviews;
     const lastInit = lastName.split('')[0].toUpperCase();
-
+    let { helpful } = this.state;
     return(
       <ReviewContainer className='indiv-review'>
         <Star id='star-rating'>{this.createStars(stars)}</Star>
@@ -96,7 +102,7 @@ class Review extends React.Component {
         <Title>{title}</Title>
         <Description>{description}</Description>
         <Title>{ `${firstName} ${lastInit}.` }</Title>
-        <Button className='helpful-btn'>Helpful (0)</Button>
+        <Button className='helpful-btn' onClick={this.handleClick}>Helpful(`${helpful}`)</Button>
       </ReviewContainer>
     )
   }
