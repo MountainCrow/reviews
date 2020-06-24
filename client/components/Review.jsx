@@ -39,6 +39,23 @@ const Button = styled.div`
   border-radius:3px;
   text-align: center;
   z-index: 2;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+
+
+  &:hover {
+    top: -5px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.3);
+  }
+
+  &:active {
+    background-color: #4d573e;
+    top: 0px ;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+  }
+
 `;
 
 const ReviewContainer = styled.div`
