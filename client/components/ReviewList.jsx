@@ -46,9 +46,13 @@ class ReviewList extends React.Component {
         <div
           style={{
             fontSize: "18px",
-            padding: "0 12px",
             lineHeight: "18px",
             verticalAlign: "middle",
+            fontFamily: "sans-serif",
+            // position: "absolute",
+            // width:"170px",
+            // top: '97%',
+            // left: '70%'
           }}
         >
         {i+1}

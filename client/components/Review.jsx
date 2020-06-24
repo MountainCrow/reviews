@@ -39,6 +39,23 @@ const Button = styled.div`
   border-radius:3px;
   text-align: center;
   z-index: 2;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+
+
+  &:hover {
+    top: -5px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.3);
+  }
+
+  &:active {
+    background-color: #4d573e;
+    top: 0px ;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+  }
+
 `;
 
 const ReviewContainer = styled.div`
@@ -61,9 +78,11 @@ class Review extends React.Component {
 
     this.state = {
       rating: 0,
+      helpful: 0,
     }
 
     this.createStars = this.createStars.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount(){
@@ -84,11 +103,18 @@ class Review extends React.Component {
     return store;
   }
 
+  handleClick(){
+    const newNum = this.state.helpful + 1;
+    console.log('Button CLicked');
+    this.setState({helpful: newNum})
+  }
+
+
 
   render(){
     const { stars, postDate, title, description, firstName, lastName } = this.props.allReviews;
     const lastInit = lastName.split('')[0].toUpperCase();
-
+    let { helpful } = this.state;
     return(
       <ReviewContainer className='indiv-review'>
         <Star id='star-rating'>{this.createStars(stars)}</Star>
@@ -96,7 +122,7 @@ class Review extends React.Component {
         <Title>{title}</Title>
         <Description>{description}</Description>
         <Title>{ `${firstName} ${lastInit}.` }</Title>
-        <Button className='helpful-btn'>Helpful (0)</Button>
+        <Button className='helpful-btn' id={firstName} onClick={this.handleClick}>Helpful({helpful})</Button>
       </ReviewContainer>
     )
   }
