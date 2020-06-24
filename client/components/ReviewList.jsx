@@ -5,12 +5,8 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import { SampleNextArrow, SamplePrevArrow } from './ReactSlick/Arrows.jsx'
 
-/* React Slick Styling */
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
 
 const ReviewMain = styled.div`
-  padding: 15px;
   max-width: 974px;
 `;
 

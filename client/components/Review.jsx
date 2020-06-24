@@ -12,9 +12,13 @@ const Date = styled.p`
 const Title = styled.div`
   color: #303030;
   font-size: 14px;
-  margin: 0px 0px 15px;
+  margin-bottom: 15px;
   font-family: sans-serif;
   font-weight: 700;
+`;
+
+const Star = styled.div`
+  margin-bottom:10px;
 `;
 
 const Description = styled.div`
@@ -34,7 +38,7 @@ const Button = styled.div`
   max-width:100px;
   border-radius:3px;
   text-align: center;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const ReviewContainer = styled.div`
@@ -43,6 +47,10 @@ const ReviewContainer = styled.div`
 `;
 
 const Fullicon = styled.i`
+  color: #cc1517;
+`;
+
+const EmptyStar = styled.i`
   color: #cc1517;
 `;
 
@@ -70,7 +78,7 @@ class Review extends React.Component {
       store.push(<Fullicon className="material-icons starColo" key={i}>star</Fullicon>)
     }
     for(let j = 0; j < blankStar; j++){
-      store.push(<i className="material-icons" key={10+j} id='blank_star'>star</i>)
+      store.push(<EmptyStar className="material-icons" key={10+j} id='star_border'>star_border</EmptyStar>)
     }
 
     return store;
@@ -78,31 +86,20 @@ class Review extends React.Component {
 
 
   render(){
-    const { stars, date, title, description, name } = this.props.allReviews;
+    const { stars, postDate, title, description, firstName, lastName } = this.props.allReviews;
+    const lastInit = lastName.split('')[0].toUpperCase();
+
     return(
       <ReviewContainer className='indiv-review'>
-        <div id='star-rating'>{this.createStars(stars)}</div>
-        <Date>{date}</Date>
+        <Star id='star-rating'>{this.createStars(stars)}</Star>
+        <Date>{postDate}</Date>
         <Title>{title}</Title>
         <Description>{description}</Description>
-        <Title>{name}</Title>
-        <Button className='helpful-btn'>Helpful(0)</Button>
+        <Title>{ `${firstName} ${lastInit}.` }</Title>
+        <Button className='helpful-btn'>Helpful (0)</Button>
       </ReviewContainer>
     )
   }
 }
 
 export default Review;
-
-
-
-// const Review = (props) => (
-//   <ReviewContainer className='indiv-review'>
-//     <div id='star-rating'>{props.allReviews.stars}</div>
-//     <Date>{props.allReviews.date}</Date>
-//     <Title>{props.allReviews.title}</Title>
-//     <Description>{props.allReviews.description}</Description>
-//     <Title>{props.allReviews.name}</Title>
-//     <Button className='helpful-btn'>Helpful(0)</Button>
-//   </ReviewContainer>
-// )

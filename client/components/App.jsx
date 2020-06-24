@@ -11,6 +11,7 @@ const AppMain = styled.div`
   max-width: 974px;
   justify-content: center;
   background-color: #f4f4f4;
+  padding: 15px;
 `;
 
 class App extends React.Component {
@@ -22,6 +23,7 @@ class App extends React.Component {
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.giveAllRatings = this.giveAllRatings.bind(this);
   }
 
   componentDidMount() {
@@ -35,12 +37,24 @@ class App extends React.Component {
       .catch((err) => { throw err; });
   }
 
+  giveAllRatings() {
+    const store = [];
+    const { reviews } = this.state;
+    if (reviews.length > 0) {
+      reviews.forEach((review) => {
+        store.push(review.stars);
+      });
+      return store;
+    }
+    return [];
+  }
+
   render() {
     const { reviews } = this.state;
     return (
       <AppMain id="main">
-        <h1>Working</h1>
-        <ReviewHead />
+
+        <ReviewHead allRatings={this.giveAllRatings()} />
         <ReviewList allReviews={reviews || null} />
       </AppMain>
     );
