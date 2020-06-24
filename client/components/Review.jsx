@@ -65,6 +65,7 @@ class Review extends React.Component {
     }
 
     this.createStars = this.createStars.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount(){
@@ -86,7 +87,9 @@ class Review extends React.Component {
   }
 
   handleClick(){
-    this.setState({helpful: this.state.helpful++})
+    const newNum = this.state.helpful + 1;
+    console.log('Button CLicked');
+    this.setState({helpful: newNum})
   }
 
 
@@ -102,7 +105,7 @@ class Review extends React.Component {
         <Title>{title}</Title>
         <Description>{description}</Description>
         <Title>{ `${firstName} ${lastInit}.` }</Title>
-        <Button className='helpful-btn' onClick={this.handleClick}>Helpful(`${helpful}`)</Button>
+        <Button className='helpful-btn' id={firstName} onClick={this.handleClick}>Helpful({helpful})</Button>
       </ReviewContainer>
     )
   }
