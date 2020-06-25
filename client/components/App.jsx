@@ -20,10 +20,12 @@ class App extends React.Component {
 
     this.state = {
       reviews: '',
+
     };
 
     this.componentDidMount = this.componentDidMount.bind(this);
     this.giveAllRatings = this.giveAllRatings.bind(this);
+    this.getSortState = this.getSortState.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +37,13 @@ class App extends React.Component {
     request
       .then((allreviews) => this.setState({ reviews: allreviews.data }))
       .catch((err) => { throw err; });
+  }
+
+  getSortState(term) {
+    const { reviews } = this.state;
+    console.log("Term is passed to App", term);
+
+    // sort the array by top rated, lowest rated, most recent
   }
 
   giveAllRatings() {
@@ -54,7 +63,7 @@ class App extends React.Component {
     return (
       <AppMain id="main">
 
-        <ReviewHead allRatings={this.giveAllRatings()} />
+        <ReviewHead getSort={this.getSortState} allRatings={this.giveAllRatings()} />
         <ReviewList allReviews={reviews || null} />
       </AppMain>
     );

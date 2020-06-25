@@ -108,7 +108,6 @@ const P = styled.p`
  margin: 3px 0 0 0;
 `;
 
-
 class ReviewHead extends React.Component {
 
   constructor(props) {
@@ -169,6 +168,7 @@ class ReviewHead extends React.Component {
 
   displayDropDown() {
     const { dropDown } = this.state;
+    const { getSort } = this.props;
     if (dropDown) {
       return (
         <SortHolder id="sort_holder">
@@ -176,7 +176,7 @@ class ReviewHead extends React.Component {
             <P>Hide Sorting</P>
             <i className="material-icons-round">navigate_before</i>
           </SortBtn>
-          <SortDropDown />
+          <SortDropDown getSort={getSort} />
         </SortHolder>
       );
     }
