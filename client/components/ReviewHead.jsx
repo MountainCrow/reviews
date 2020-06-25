@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import SortDropDown from './SortDropDown.jsx'
 
 const RevHead = styled.div`
   max-width: 974px;
   font-family: sans-serif;
+  padding-bottom:20px;
 `;
 
 const Title = styled.div`
@@ -20,7 +22,8 @@ const Info = styled.div`
   justify-content: flex-start;
   align-content:center;
   font-size: 16px;
-
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d6d6d6;
 `;
 
 const Sort = styled.div`
@@ -78,16 +81,47 @@ const StarContainer = styled.div`
   margin-left: 5px;
 `;
 
+const SortHolder = styled.div`
+  position:absolute;
+  left: 69.4%;
+  top: 7%;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  width:150px
+`;
+
+const SortBtn = styled.div`
+  /* text-align:rightSortBtn */
+  margin-bottom: 5px;
+  display:flex;
+  justify-content:center;
+  align-content:center;
+
+  &:hover{
+    color:firebrick;
+  }
+`;
+
+const P = styled.p`
+ margin: 3px 0 0 0;
+`;
+
+
 class ReviewHead extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
+      dropDown: false,
     };
 
     this.getAverage = this.getAverage.bind(this);
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.openDropDown = this.openDropDown.bind(this);
+    this.displayDropDown = this.displayDropDown.bind(this);
   }
 
   componentDidUpdate() {
@@ -126,8 +160,39 @@ class ReviewHead extends React.Component {
     return store;
   }
 
+  openDropDown() {
+    const { dropDown } = this.state;
+    this.setState({ dropDown: !dropDown });
+
+    this.displayDropDown();
+  }
+
+  displayDropDown() {
+    const { dropDown } = this.state;
+    if (dropDown) {
+      return (
+        <SortHolder id="sort_holder">
+          <SortBtn>
+            <P>Hide Sorting</P>
+            <i className="material-icons-round">navigate_before</i>
+          </SortBtn>
+          <SortDropDown />
+        </SortHolder>
+      );
+    }
+
+    return (
+      <SortHolder>
+        <SortBtn>
+          <P>Sort By </P>
+          <i className="material-icons-round">navigate_next</i>
+        </SortBtn>
+      </SortHolder>
+    );
+  }
+
   render() {
-    const { allRatings } = this.props;
+    const { dropDown } = this.state;
     return (
       <RevHead>
         <Title>Reviews</Title>
@@ -141,7 +206,9 @@ class ReviewHead extends React.Component {
           <StarContainer>
             {this.createStars()}
           </StarContainer>
-          <Sort id="sort-dropdown">Drop Down</Sort>
+          <Sort id="sort-dropdown" onClick={this.openDropDown}>
+            {this.displayDropDown()}
+          </Sort>
         </Info>
         <Button type="submit">Write A Review</Button>
       </RevHead>

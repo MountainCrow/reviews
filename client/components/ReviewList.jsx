@@ -49,10 +49,6 @@ class ReviewList extends React.Component {
             lineHeight: "18px",
             verticalAlign: "middle",
             fontFamily: "sans-serif",
-            // position: "absolute",
-            // width:"170px",
-            // top: '97%',
-            // left: '70%'
           }}
         >
         {i+1}
