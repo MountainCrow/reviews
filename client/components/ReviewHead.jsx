@@ -118,7 +118,6 @@ class ReviewHead extends React.Component {
     };
 
     this.getAverage = this.getAverage.bind(this);
-    //this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.openDropDown = this.openDropDown.bind(this);
     this.displayDropDown = this.displayDropDown.bind(this);
 

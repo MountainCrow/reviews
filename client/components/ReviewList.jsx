@@ -15,7 +15,7 @@ class ReviewList extends React.Component {
     super(props);
 
     this.state = {
-      reviews: this.props.allReviews,
+      allreviews: this.props.allReviews,
       sortBy: 'Top Rated',
     }
     this.carouselStructure = this.carouselStructure.bind(this);
@@ -80,7 +80,7 @@ class ReviewList extends React.Component {
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
     }
-    console.log("Revies from ReviewList Props: " , allReviews)
+    console.log("Reviews from ReviewList Props: " , allReviews)
     return (
       <ReviewMain id="review-list">
         <Slider {...settings} >

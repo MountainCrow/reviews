@@ -2,6 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import regeneratorRuntime from "regenerator-runtime";
 
 import helpers from '../../util/sortFunctions.js'
 import ReviewList from './ReviewList.jsx';
@@ -26,18 +27,22 @@ class App extends React.Component {
 
     this.giveAllRatings = this.giveAllRatings.bind(this);
     this.getSortState = this.getSortState.bind(this);
+    this.getReviews = this.getReviews.bind(this);
+  }
+
+  // state never gets put into the react components
+  // though some how the state i getting passed down to the reviewlist and rendered
+  // which would be ok but later I need to referenc the state in order to render a sorted version of the reviews.
+  // the normal way of the axios functions is written below th export function vvvvvvvvv line 89
+  getReviews = async () => {
+    let res = await axios.get('/reviews');
+    console.log(res)
+    this.setState({reviews: res.data})
+    console.log(this.state)
   }
 
   componentDidMount() {
-    axios.get('/reviews')
-      .then((allReviews) => {
-        console.log("All Reviews: ", allReviews)
-        this.setState({
-          reviews: allReviews.data,
-          allRatingsArr: this.giveAllRatings(),
-         })})
-
-      .catch((err) => { throw err; });
+    this.getReviews()
   }
 
   getSortState(term) {
@@ -53,18 +58,15 @@ class App extends React.Component {
       reviews.forEach((review) => {
         store.push(review.stars);
       });
-      console.log("Store: ", store)
       return store;
     }
-    console.log("Ratings returning empty array");
     return []
   }
 
 
 
   render() {
-    if ( this.state.reviews ) {
-      console.log("Reviews: ",this.state.reviews)
+    if ( this.state.reviews && this.state.reviews.length > 0 ) {
       return (
         <AppMain id="main">
           <ReviewHead getSort={this.getSortState} allRatings={this.giveAllRatings()} />
@@ -81,3 +83,18 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+
+ // getReviews() {
+  //   axios
+  //     .get('/reviews')
+  //     .then((results) => {
+  //       this.setState({
+  //         reviews: data,
+  //         renderData: true,
+  //         allRatingsArr: this.giveAllRatings(),
+  //       });
+  //     })
+  //     .catch((err) => { throw err; });
+  // }
