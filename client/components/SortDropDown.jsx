@@ -26,11 +26,13 @@ const MR = styled.p`
   &:hover{
     color:firebrick;
   }
-`;const TR = styled.p`
+`;
+const TR = styled.p`
   &:hover{
     color:firebrick;
   }
-`;const LR = styled.p`
+`;
+const LR = styled.p`
   &:hover{
     color:firebrick;
   }
@@ -42,6 +44,7 @@ class SortDropDown extends React.Component {
   }
 
   handleClick(event) {
+    console.log("clicked")
     const { getSort } = this.props;
     getSort(event.target.textContent);
   }
@@ -59,4 +62,4 @@ class SortDropDown extends React.Component {
   }
 }
 
-export default SortDropDown
+export default SortDropDown;

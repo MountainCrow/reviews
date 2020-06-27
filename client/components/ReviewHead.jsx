@@ -118,12 +118,13 @@ class ReviewHead extends React.Component {
     };
 
     this.getAverage = this.getAverage.bind(this);
-    this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    //this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.openDropDown = this.openDropDown.bind(this);
     this.displayDropDown = this.displayDropDown.bind(this);
+
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     if (!this.state.avgRating) {
       this.setState({ avgRating: this.getAverage() });
     }
@@ -200,7 +201,7 @@ class ReviewHead extends React.Component {
           <div>
             Overall Rating:
             <AvgNum>
-              {`  ${this.getAverage()}`}
+              {`${this.getAverage()}`}
             </AvgNum>
           </div>
           <StarContainer>
