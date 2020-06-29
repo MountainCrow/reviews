@@ -23,6 +23,7 @@ class App extends React.Component {
 
     this.state = {
       reviews: null,
+      sortBy: "Top Rated",
     };
 
     this.giveAllRatings = this.giveAllRatings.bind(this);
@@ -34,11 +35,23 @@ class App extends React.Component {
   // though some how the state i getting passed down to the reviewlist and rendered
   // which would be ok but later I need to referenc the state in order to render a sorted version of the reviews.
   // the normal way of the axios functions is written below th export function vvvvvvvvv line 89
-  getReviews = async () => {
-    let res = await axios.get('/reviews');
-    console.log(res)
-    this.setState({reviews: res.data})
-    console.log(this.state)
+
+
+  getReviews() {
+    axios
+      .get('/reviews')
+      .then((results) => {
+        if (results.data.length === 0) {
+          console.log("here is results: " , results.data);
+        } else {
+          this.setState({
+            reviews: results.data,
+            renderData: true,
+            allRatingsArr: this.giveAllRatings(),
+          }, () => console.log("here is results: " , results.data));
+        }
+      })
+      .catch((err) => { throw err; });
   }
 
   componentDidMount() {
@@ -47,8 +60,8 @@ class App extends React.Component {
 
   getSortState(term) {
     this.setState({
-      sortBy: term,
-    })
+      sortBy: term.target.textContent,
+    }, () => console.log("Term: ", term.target.textContent))
   }
 
   giveAllRatings() {
@@ -86,15 +99,22 @@ export default App;
 
 
 
- // getReviews() {
-  //   axios
-  //     .get('/reviews')
-  //     .then((results) => {
-  //       this.setState({
-  //         reviews: data,
-  //         renderData: true,
-  //         allRatingsArr: this.giveAllRatings(),
-  //       });
-  //     })
-  //     .catch((err) => { throw err; });
+//  getReviews() {
+//     axios
+//       .get('/reviews')
+//       .then((results) => {
+//         this.setState({
+//           reviews: data,
+//           renderData: true,
+//           allRatingsArr: this.giveAllRatings(),
+//         });
+//       })
+//       .catch((err) => { throw err; });
+//   }
+
+// getReviews = async () => {
+  //   let res = await axios.get('/reviews');
+  //   console.log(res)
+  //   this.setState({reviews: res.data})
+  //   //console.log(this.state)
   // }

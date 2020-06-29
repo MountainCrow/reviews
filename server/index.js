@@ -15,8 +15,9 @@ app.use(bodyParser.json());
 
 // test this for return object type or length
 const getReviews = app.get('/reviews', (req, res) => {
+  const ran = Math.ceil(Math.random() * 6);
   ReviewModel.find()
-    .limit(10)
+    .limit(ran)
     .exec((err, results) => {
       if (err) {
         throw err;

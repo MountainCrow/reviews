@@ -13,20 +13,8 @@ const ReviewMain = styled.div`
 class ReviewList extends React.Component {
   constructor(props){
     super(props);
-
-    this.state = {
-      allreviews: this.props.allReviews,
-      sortBy: 'Top Rated',
-    }
     this.carouselStructure = this.carouselStructure.bind(this);
     this.sortReviews = this.sortReviews.bind(this);
-  }
-
-  componentDidUpdate(){
-    if(this.state.sortBy !== this.props.sortBy){
-      this.setState({sortBy: this.props.sortBy})
-    }
-
   }
 
   carouselStructure(allReviews) {
@@ -34,21 +22,33 @@ class ReviewList extends React.Component {
     while(allReviews.length > 0){
       revBlock.push(allReviews.splice(0,2));
     }
-    return(
+
+    console.log("Reviews Blocks: " , revBlock);
+
+    return (
       revBlock.map((setOfReviews, index) => {
-        return(
+        if(setOfReviews.length == 2){
+          return(
             <div key={index}>
               <Review allReviews={setOfReviews[0]} />
               <Review allReviews={setOfReviews[1]} />
             </div>
-        )
+          )
+        }else{
+          return (
+            <div key={index}>
+              <Review allReviews={setOfReviews[0]} />
+            </div>
+          )
+        }
+
       })
    )
   }
 
   sortReviews(reviews){
-    console.log("Sorting the Reviews");
-    const { sortBy } = this.state;
+    console.log("Reviews: ", reviews[0])
+    const { sortBy } = this.props;
     if (sortBy === 'Lowest Rated' && reviews.length > 0) {
       const lowestFirst = helpers.lowestRated(reviews);
       return this.carouselStructure(lowestFirst);

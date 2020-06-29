@@ -120,13 +120,6 @@ class ReviewHead extends React.Component {
     this.getAverage = this.getAverage.bind(this);
     this.openDropDown = this.openDropDown.bind(this);
     this.displayDropDown = this.displayDropDown.bind(this);
-
-  }
-
-  componentDidMount() {
-    if (!this.state.avgRating) {
-      this.setState({ avgRating: this.getAverage() });
-    }
   }
 
   getAverage() {
@@ -141,14 +134,13 @@ class ReviewHead extends React.Component {
     return 0;
   }
 
-  createStars() {
-    const { avgRating } = this.state; // 3.6
+  createStars(num) {
     const store = [];
-    const rounded = Math.floor(avgRating); // 3.0
+    const rounded = Math.floor(num); // 3.0
     for (let i = 0; i < rounded; i++) {
       store.push(<Fullicon className="material-icons " key={i}>star</Fullicon>);
     }
-    if (avgRating > rounded) {
+    if (num > rounded) {
       store.push(<Halficon className="material-icons " key="1/2">star_half</Halficon>);
     }
     const blankStar = 5 - store.length;
@@ -162,7 +154,6 @@ class ReviewHead extends React.Component {
   openDropDown() {
     const { dropDown } = this.state;
     this.setState({ dropDown: !dropDown });
-
     this.displayDropDown();
   }
 
@@ -204,7 +195,7 @@ class ReviewHead extends React.Component {
             </AvgNum>
           </div>
           <StarContainer>
-            {this.createStars()}
+            {this.createStars(this.getAverage())}
           </StarContainer>
           <Sort id="sort-dropdown" onClick={this.openDropDown}>
             {this.displayDropDown()}

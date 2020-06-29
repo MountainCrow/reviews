@@ -77,7 +77,6 @@ class Review extends React.Component {
     super(props);
 
     this.state = {
-      rating: 0,
       helpful: 0,
     }
 
