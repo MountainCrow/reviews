@@ -49,14 +49,4 @@ const addFakeData = (i, str) => {
   console.log(reviewObj);
 };
 
-// for (let i = 1; i <= 100; i++) {
-//   if (i < 33) {
-//     addFakeData(i, 'bag');
-//   } else if (i >= 33 && i < 66) {
-//     addFakeData(i, 'jacket');
-//   } else {
-//     addFakeData(i, 'tent');
-//   }
-// }
-
 module.exports = { ReviewModel, db };

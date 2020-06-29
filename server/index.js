@@ -14,16 +14,17 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 
 // test this for return object type or length
-const getReviews = app.get('/reviews', (req, res, next) => {
-  ReviewModel.find((err, results) => {
-    if (err) {
-      throw err;
-    } else {
-      res.status(200);
-      res.send(results);
-      next();
-    }
-  }).limit(10);
+const getReviews = app.get('/reviews', (req, res) => {
+  ReviewModel.find()
+    .limit(10)
+    .exec((err, results) => {
+      if (err) {
+        throw err;
+      } else {
+        res.status(200);
+        res.send(results);
+      }
+    });
 
 });
 
