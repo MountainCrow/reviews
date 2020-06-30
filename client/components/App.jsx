@@ -22,7 +22,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      reviews: null,
+      reviews:[],
       sortBy: "Top Rated",
     };
 
@@ -44,8 +44,9 @@ class App extends React.Component {
         if (results.data.length === 0) {
           console.log("here is results: " , results.data);
         } else {
+          const rob = results.data.splice(0, results.length)
           this.setState({
-            reviews: results.data,
+            reviews: rob,
             renderData: true,
             allRatingsArr: this.giveAllRatings(),
           }, () => console.log("here is results: " , results.data));
@@ -55,18 +56,33 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviews()
+    // this.getReviews()
+
+    axios.get('/reviews')
+      .then((results) => {
+        if (results.data.length === 0) {
+          console.log("here is results: " , results.data);
+        } else {
+          console.log(results.data)
+          this.setState({
+            reviews: results.data,
+            renderData: true,
+          });
+        }
+      })
+      .catch((err) => { throw err; });
   }
 
   getSortState(term) {
     this.setState({
       sortBy: term.target.textContent,
-    }, () => console.log("Term: ", term.target.textContent))
+    })
   }
 
   giveAllRatings() {
     const store = [];
     const { reviews } = this.state;
+    console.log("in give all ratings: ",reviews)
     if (reviews && reviews.length > 0) {
       reviews.forEach((review) => {
         store.push(review.stars);
@@ -79,6 +95,7 @@ class App extends React.Component {
 
 
   render() {
+    console.log("Rendering in App Component: ", this.state)
     if ( this.state.reviews && this.state.reviews.length > 0 ) {
       return (
         <AppMain id="main">
