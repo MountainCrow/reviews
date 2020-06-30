@@ -8,6 +8,7 @@ import { SampleNextArrow, SamplePrevArrow } from './ReactSlick/Arrows.jsx'
 
 const ReviewMain = styled.div`
   max-width: 974px;
+  margin-bottom: 55px;
 `;
 
 class ReviewList extends React.Component {

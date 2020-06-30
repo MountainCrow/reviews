@@ -24,10 +24,13 @@ const Info = styled.div`
   font-size: 16px;
   padding-bottom: 15px;
   border-bottom: 1px solid #d6d6d6;
+  position:relative;
 `;
 
 const Sort = styled.div`
   margin-left:auto;
+  /* left: 90% */
+  position:relative;
 `;
 
 const Button = styled.div`
@@ -83,9 +86,8 @@ const StarContainer = styled.div`
 
 const SortHolder = styled.div`
   position:absolute;
-  left: 69.4%;
-  top: 7%;
-  z-index:1;
+  left: -150px;
+  z-index:10;
   display:flex;
   flex-direction:column;
   align-items:flex-end;
@@ -173,7 +175,7 @@ class ReviewHead extends React.Component {
     }
 
     return (
-      <SortHolder>
+      <SortHolder id="sort_holder">
         <SortBtn>
           <P>Sort By </P>
           <i className="material-icons-round">navigate_next</i>

@@ -3,13 +3,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SortContainer = styled.div`
-  /* position:abolsute; */
+  position:absolute;
   width: 150px;
   height: 122px;
   position: relative;
   border: 1px solid black;
   background-color:white;
   padding: 5px;
+  z-index:10;
 `;
 
 const SortList = styled.div`

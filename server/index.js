@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const helmet = require('helmet');
 const { ReviewModel, db } = require('../database/db.js');
 
 const PORT = 3003;
@@ -14,11 +13,6 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
-
-// const corsOptions = {
-//   origin: 'http://localhost:3000',
-//   optionsSuccessStatus: 200,
-// };
 
 const status = app.get('/', (req, res) => {
   res.status(200);
