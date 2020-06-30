@@ -19,8 +19,9 @@ class ReviewList extends React.Component {
 
   carouselStructure(allReviews) {
     const revBlock = [];
-    while(allReviews.length > 0){
-      revBlock.push(allReviews.splice(0,2));
+    let copy = Array.from(allReviews);
+    while(copy.length > 0){
+      revBlock.push(copy.splice(0,2));
     }
 
     console.log("Reviews Blocks: " , revBlock);
@@ -46,14 +47,16 @@ class ReviewList extends React.Component {
    )
   }
 
-  sortReviews(reviews){
+  sortReviews(reviews, method){
     console.log("Reviews: ", reviews[0])
     const { sortBy } = this.props;
     if (sortBy === 'Lowest Rated' && reviews.length > 0) {
       const lowestFirst = helpers.lowestRated(reviews);
+
       return this.carouselStructure(lowestFirst);
     } else if (sortBy === 'Top Rated' && reviews.length > 0) {
       const highestFirst = helpers.highestRated(reviews);
+      console.log("Highest First: ", highestFirst)
       return this.carouselStructure(highestFirst);
     }
   }
@@ -80,12 +83,12 @@ class ReviewList extends React.Component {
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
     }
-    console.log("Reviews from ReviewList Props: " , allReviews)
+    console.log("Typeof: " , (this.state))
     return (
       <ReviewMain id="review-list">
         <Slider {...settings} >
           {
-            allReviews ? this.sortReviews(allReviews) : <h1> Loading...</h1>
+            allReviews ? this.sortReviews(allReviews, "Lowest Rated") : <h1> Loading...</h1>
           }
         </Slider>
       </ReviewMain>
@@ -94,3 +97,6 @@ class ReviewList extends React.Component {
 };
 
 export default ReviewList;
+
+
+

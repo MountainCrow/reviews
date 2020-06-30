@@ -191,7 +191,7 @@ class ReviewHead extends React.Component {
           <div>
             Overall Rating:
             <AvgNum>
-              {`${this.getAverage()}`}
+              {`${this.getAverage().toFixed(2)}`}
             </AvgNum>
           </div>
           <StarContainer>
