@@ -58,7 +58,7 @@ class App extends React.Component {
   componentDidMount() {
     // this.getReviews()
 
-    axios.get('/reviews')
+    axios.get('http://127.0.0.1:3003/reviews')
       .then((results) => {
         if (results.data.length === 0) {
           console.log("here is results: " , results.data);
