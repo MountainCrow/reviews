@@ -29,6 +29,7 @@ const getReviews = app.get('/reviews', (req, res) => {
         throw err;
       } else {
         res.status(200);
+        console.log(results);
         res.send(results);
       }
     });

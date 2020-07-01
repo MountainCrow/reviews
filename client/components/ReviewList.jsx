@@ -59,6 +59,9 @@ class ReviewList extends React.Component {
       const highestFirst = helpers.highestRated(reviews);
       console.log("Highest First: ", highestFirst)
       return this.carouselStructure(highestFirst);
+    } else if ( sortBy === 'Most Recent' && reviews.length > 0) {
+      const mostRecent = helpers.mostRecent(reviews);
+      return this.carouselStructure(mostRecent);
     }
   }
 

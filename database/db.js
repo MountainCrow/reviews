@@ -30,7 +30,7 @@ const addFakeData = (i, str) => {
   const reviewObj = {};
   reviewObj.product_id = i;
   reviewObj.stars = Math.ceil(Math.random() * 5);
-  reviewObj.postDate = moment(faker.date.past()).format('MMM Do YYYY');
+  reviewObj.postDate = faker.date.past();
   reviewObj.title = faker.fake('{{lorem.words}} {{commerce.productAdjective}}');
   reviewObj.description = faker.lorem.paragraph();
   reviewObj.firstName = faker.name.firstName();

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const Date = styled.p`
   color: #303030;
@@ -113,7 +114,7 @@ class Review extends React.Component {
     return(
       <ReviewContainer className='indiv-review'>
         <Star id='star-rating'>{this.createStars(stars)}</Star>
-        <Date>{postDate}</Date>
+        <Date>{moment(postDate).format("MMM Do YY")}</Date>
         <Title>{title}</Title>
         <Description>{description}</Description>
         <Title>{ `${firstName} ${lastInit}.` }</Title>
