@@ -1,19 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import SortDropDown from './SortDropDown.jsx'
+import SortDropDown from './SortDropDown.jsx';
 
 const RevHead = styled.div`
   max-width: 974px;
-  font-family: sans-serif;
-  padding-bottom:20px;
+  font-family:  'M PLUS Rounded 1c', sans-serif;  padding-bottom:20px;
 `;
 
 const Title = styled.div`
   font-size:28px;
   font-weight: 700;
-  color: #303030
-  font-family: sans-serif;
-  margin: 0 0 20px;
+  color: #303030;
+  font-family:  'M PLUS Rounded 1c', sans-serif;  margin: 0 0 20px;
 `;
 
 const Info = styled.div`
@@ -29,7 +27,6 @@ const Info = styled.div`
 
 const Sort = styled.div`
   margin-left:auto;
-  /* left: 90% */
   position:relative;
 `;
 
@@ -38,7 +35,7 @@ const Button = styled.div`
   background-color: #6c7c57;
   padding: 15px 25px;
   margin: 13px 0px 0px;
-  font-family: sans-serif;
+  font-family:  'M PLUS Rounded 1c', sans-serif;
   font-size: 12px;
   color: #FFFFFF;
   min-width:90px;
@@ -95,7 +92,6 @@ const SortHolder = styled.div`
 `;
 
 const SortBtn = styled.div`
-  /* text-align:rightSortBtn */
   margin-bottom: 5px;
   display:flex;
   justify-content:center;

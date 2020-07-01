@@ -6,15 +6,13 @@ const Date = styled.p`
   color: #303030;
   font-size: 14px;
   margin: 0px 0px 5px;
-  font-family: sans-serif;
-`;
+  font-family:  'M PLUS Rounded 1c', sans-serif;`;
 
 const Title = styled.div`
   color: #303030;
   font-size: 14px;
   margin-bottom: 15px;
-  font-family: sans-serif;
-  font-weight: 700;
+  font-family:  'M PLUS Rounded 1c', sans-serif;  font-weight: 700;
 `;
 
 const Star = styled.div`
@@ -25,14 +23,12 @@ const Description = styled.div`
   color: #303030;
   font-size: 14px;
   margin: 0px 0px 15px;
-  font-family: sans-serif;
-`;
+  font-family:  'M PLUS Rounded 1c', sans-serif;`;
 
 const Button = styled.div`
   background-color: #6c7c57;
   padding: 5px 10px;
-  font-family: sans-serif;
-  font-size: 12px;
+  font-family:  'M PLUS Rounded 1c', sans-serif;  font-size: 12px;
   color: #FFFFFF;
   min-width:90px;
   max-width:100px;

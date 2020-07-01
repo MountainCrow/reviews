@@ -22,7 +22,6 @@ const SortList = styled.div`
   text-align:right;
 
 `;
-
 const MR = styled.p`
   &:hover{
     color:firebrick;

@@ -15,6 +15,7 @@ const AppMain = styled.div`
   justify-content: center;
   background-color: #f4f4f4;
   padding: 15px;
+  font-family:  'M PLUS Rounded 1c', sans-serif;
 `;
 
 class App extends React.Component {
