@@ -43,14 +43,14 @@ class App extends React.Component {
       .get('/reviews')
       .then((results) => {
         if (results.data.length === 0) {
-          console.log("here is results: " , results.data);
+          //console.log("here is results: " , results.data);
         } else {
           const rob = results.data.splice(0, results.length)
           this.setState({
             reviews: rob,
             renderData: true,
             allRatingsArr: this.giveAllRatings(),
-          }, () => console.log("here is results: " , results.data));
+          })
         }
       })
       .catch((err) => { throw err; });
@@ -62,9 +62,9 @@ class App extends React.Component {
     axios.get('http://127.0.0.1:3003/reviews')
       .then((results) => {
         if (results.data.length === 0) {
-          console.log("here is results: " , results.data);
+          //console.log("here is results: " , results.data);
         } else {
-          console.log(results.data)
+          //console.log(results.data)
           this.setState({
             reviews: results.data,
             renderData: true,
@@ -83,7 +83,7 @@ class App extends React.Component {
   giveAllRatings() {
     const store = [];
     const { reviews } = this.state;
-    console.log("in give all ratings: ",reviews)
+    //console.log("in give all ratings: ",reviews)
     if (reviews && reviews.length > 0) {
       reviews.forEach((review) => {
         store.push(review.stars);
@@ -96,7 +96,7 @@ class App extends React.Component {
 
 
   render() {
-    console.log("Rendering in App Component: ", this.state)
+    //console.log("Rendering in App Component: ", this.state)
     if ( this.state.reviews && this.state.reviews.length > 0 ) {
       return (
         <AppMain id="main">

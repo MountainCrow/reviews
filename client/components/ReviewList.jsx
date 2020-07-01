@@ -25,7 +25,7 @@ class ReviewList extends React.Component {
       revBlock.push(copy.splice(0,2));
     }
 
-    console.log("Reviews Blocks: " , revBlock);
+    //console.log("Reviews Blocks: " , revBlock);
 
     return (
       revBlock.map((setOfReviews, index) => {
@@ -49,15 +49,14 @@ class ReviewList extends React.Component {
   }
 
   sortReviews(reviews, method){
-    console.log("Reviews: ", reviews[0])
+    //console.log("Reviews: ", reviews[0])
     const { sortBy } = this.props;
     if (sortBy === 'Lowest Rated' && reviews.length > 0) {
       const lowestFirst = helpers.lowestRated(reviews);
-
       return this.carouselStructure(lowestFirst);
     } else if (sortBy === 'Top Rated' && reviews.length > 0) {
       const highestFirst = helpers.highestRated(reviews);
-      console.log("Highest First: ", highestFirst)
+      //console.log("Highest First: ", highestFirst)
       return this.carouselStructure(highestFirst);
     } else if ( sortBy === 'Most Recent' && reviews.length > 0) {
       const mostRecent = helpers.mostRecent(reviews);
@@ -87,7 +86,7 @@ class ReviewList extends React.Component {
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
     }
-    console.log("Typeof: " , (this.state))
+    //console.log("Typeof: " , (this.state))
     return (
       <ReviewMain id="review-list">
         <Slider {...settings} >
