@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { $, jQuery } from 'jquery';
 
 describe('Review Head Tests', () => {
@@ -13,18 +15,24 @@ describe('Review Head Tests', () => {
   });
 
   it('Drop Down Buttons Re-Arrange Review List', () => {
-    // get the first reviews title
-    const firstNonSortedReview = cy.get('.indiv-review').eq(0).children('.title').invoke('text');
 
-    // sort the list
-    cy.get('#sort_list').children('#lowestRated');
-    cy.get('#sort_list').children('#lowestRated').click();
+    cy.get('.indiv-review').eq(0).children('.title').invoke('text').then(($revTitle) => {
+      const firstNonSortedReview = $revTitle;
 
-    // get top of list review
-    const firstSortedReview = cy.get('.indiv-review').eq(0).children('.title').invoke('text');
+      cy.get('#sort_list').children('#lowestRated').click();
 
-    // should not be the same as first review
-    expect(firstNonSortedReview).to.not.equal(firstSortedReview);
+
+      cy.get('.indiv-review').eq(0).children('.title').invoke('text').then(($revTitle2) => {
+        const firstSortedReview = $revTitle2;
+
+
+        expect(firstNonSortedReview).to.not.eq(firstSortedReview);
+      })
+
+    })
 
   })
 })
+
+
+//expect(firstNonSortedReview).to.not.equal(firstSortedReview);
