@@ -48,9 +48,9 @@ class SortDropDown extends React.Component {
     return(
       <SortContainer>
         <SortList id="sort_list">
-          <MR onClick={() => getSort(event)}>Most Recent</MR>
-          <TR onClick={() => getSort(event)}>Top Rated</TR>
-          <LR onClick={() => getSort(event)}>Lowest Rated</LR>
+          <MR onClick={() => getSort(event)} id="mostRecent">Most Recent</MR>
+          <TR onClick={() => getSort(event)} id="topRated">Top Rated</TR>
+          <LR onClick={() => getSort(event)} id="lowestRated">Lowest Rated</LR>
         </SortList>
       </SortContainer>
     )

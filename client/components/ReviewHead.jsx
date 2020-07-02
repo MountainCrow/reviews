@@ -164,7 +164,7 @@ class ReviewHead extends React.Component {
       return (
         <SortHolder id="sort_holder">
           <SortBtn>
-            <P>Hide Sorting</P>
+            <P id='sortBtn'>Hide Sorting</P>
             <i className="material-icons-round">navigate_before</i>
           </SortBtn>
           <SortDropDown getSort={getSort} />
@@ -175,7 +175,7 @@ class ReviewHead extends React.Component {
     return (
       <SortHolder id="sort_holder">
         <SortBtn>
-          <P>Sort By </P>
+          <P id='sortBtn'>Sort By</P>
           <i className="material-icons-round">navigate_next</i>
         </SortBtn>
       </SortHolder>
@@ -190,7 +190,7 @@ class ReviewHead extends React.Component {
         <Info>
           <div>
             Overall Rating:
-            <AvgNum>
+            <AvgNum id='avgNum'>
               {`${this.getAverage().toFixed(2)}`}
             </AvgNum>
           </div>

@@ -61,3 +61,22 @@ const addFakeData = (i, str) => {
 // }
 
 module.exports = { ReviewModel, db };
+
+/*
+
+Data from Product-Detail Structure
+
+{
+  "name": "KANKEN LAPTOP 13\"",
+  "type": "backpack",
+  "description": "Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit",
+  "userRating": 5,
+  "totalRatings": 6,
+  "price": 110.00,
+  "gender": "Unisex",
+  "style": "Style # F27171",
+  "size": ["One Size"],
+  "color": "166 - Acorn",
+  "url": ["https://hrphxfec.s3-us-west-1.amazonaws.com/Kanken+Laptop+13/kanken_acorn.jpg"]
+}
+*/

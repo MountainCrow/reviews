@@ -115,7 +115,7 @@ class Review extends React.Component {
       <ReviewContainer className='indiv-review'>
         <Star id='star-rating'>{this.createStars(stars)}</Star>
         <Date>{moment(postDate).format("MMM Do YY")}</Date>
-        <Title>{title}</Title>
+        <Title className="title">{title}</Title>
         <Description>{description}</Description>
         <Title>{ `${firstName} ${lastInit}.` }</Title>
         <Button className='helpful-btn' id={firstName} onClick={this.handleClick}>Helpful({helpful})</Button>

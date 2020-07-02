@@ -36,9 +36,9 @@ const getReviews = app.get('/reviews', (req, res) => {
 
 });
 
-app.get('/', (req,res) => {
-  res.send('Pinging the PORT 3003');
-});
+// app.post('/productInfo', (req,res) => {
+//   //
+// });
 
 app.listen(PORT, () => console.log('Listening on Port 3003'));
 
