@@ -25,8 +25,6 @@ class ReviewList extends React.Component {
       revBlock.push(copy.splice(0,2));
     }
 
-    //console.log("Reviews Blocks: " , revBlock);
-
     return (
       revBlock.map((setOfReviews, index) => {
         if(setOfReviews.length == 2){

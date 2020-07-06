@@ -29,35 +29,9 @@ class App extends React.Component {
 
     this.giveAllRatings = this.giveAllRatings.bind(this);
     this.getSortState = this.getSortState.bind(this);
-    this.getReviews = this.getReviews.bind(this);
-  }
-
-  // state never gets put into the react components
-  // though some how the state i getting passed down to the reviewlist and rendered
-  // which would be ok but later I need to referenc the state in order to render a sorted version of the reviews.
-  // the normal way of the axios functions is written below th export function vvvvvvvvv line 89
-
-
-  getReviews() {
-    axios
-      .get('/reviews')
-      .then((results) => {
-        if (results.data.length === 0) {
-          //console.log("here is results: " , results.data);
-        } else {
-          const rob = results.data.splice(0, results.length)
-          this.setState({
-            reviews: rob,
-            renderData: true,
-            allRatingsArr: this.giveAllRatings(),
-          })
-        }
-      })
-      .catch((err) => { throw err; });
   }
 
   componentDidMount() {
-    // this.getReviews()
 
     axios.get('http://127.0.0.1:3003/reviews')
       .then((results) => {
