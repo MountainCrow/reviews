@@ -21,9 +21,11 @@ const status = app.get('/', (req, res) => {
 
 // test this for return object type or length
 const getReviews = app.get('/reviews', (req, res) => {
-  const ran = Math.ceil(Math.random() * 10);
+  const ran = Math.ceil(Math.random() * 6) + 4;
+  const ran2 = Math.floor(Math.random() * ran);
   ReviewModel.find()
     .limit(ran)
+    .skip(ran2)
     .exec((err, results) => {
       if (err) {
         throw err;

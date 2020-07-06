@@ -10,7 +10,8 @@ describe('<Review /> React Component Testing', () => {
       stars: 3,
       title: "Fake Title",
       description: "Fake Description",
-      name: "Enzyme Sucks",
+      firstName: "Enzyme",
+      lastName: "Sucks",
       date: "July 19 1993"
     }
   }

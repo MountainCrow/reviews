@@ -40,7 +40,6 @@ const helpers = {
       b = new Date(b.postDate);
       return b - a;
     });
-    console.log(sortedActivities);
     return sortedActivities;
   },
 
@@ -48,16 +47,3 @@ const helpers = {
 
 export default helpers;
 
-
-// {
-//   _id: '5eecf082d6d4a623dcfe315e',
-//   product_id: 7,
-//   stars: 4,
-//   postDate: 'Dec 29th 2019',
-//   title: 'sint velit quas Practical',
-//   description: 'Provident repellendus ea nihil nihil provident et veniam aut. Et nesciunt omnis pariatur remvoluptas rerum assumenda rerum ratione. Deserunt occaecati velit est quis consectetur provident sapiente non. Qui rem sapiente quo eligendi illum qui id aperiam.',
-//   firstName: 'Jermaine',
-//   lastName: 'Crooks',
-//   productType: 'bag',
-//   __v: 0
-// }
