@@ -25,6 +25,7 @@ class App extends React.Component {
     this.state = {
       reviews:[],
       sortBy: "Top Rated",
+      productId: 1, // I added this for the purposes of the route
     };
 
     this.giveAllRatings = this.giveAllRatings.bind(this);
@@ -33,7 +34,8 @@ class App extends React.Component {
 
   componentDidMount() {
 
-    axios.get('http://127.0.0.1:3003/reviews')
+    axios.get(`http://127.0.0.1:3003/reviews/${this.state.productId}`)
+    // need to give a productId for the route to work
       .then((results) => {
         if (results.data.length === 0) {
           //console.log("here is results: " , results.data);

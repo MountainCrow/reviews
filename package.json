@@ -4,7 +4,7 @@
   "description": "> Full Stack Reviews Module that uses stored reviews in a mongodb db to render to DOM.",
   "main": "./server/index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "test": "jest --forceExit --detectOpenHandles --maxWorkers=1",
@@ -21,6 +21,7 @@
     "moment": "^2.26.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.19",
+    "pg": "^8.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-slick": "^0.26.1",
