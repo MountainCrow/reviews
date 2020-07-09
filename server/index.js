@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const { ReviewModel, db } = require('../database/db.js');
+const pool = require('../database/postgres-db.js');
 
 const PORT = 3003;
 
@@ -20,21 +21,18 @@ const status = app.get('/', (req, res) => {
 });
 
 // test this for return object type or length
-const getReviews = app.get('/reviews', (req, res) => {
-  const ran = Math.ceil(Math.random() * 6) + 4;
-  const ran2 = Math.floor(Math.random() * ran);
-  ReviewModel.find()
-    .limit(ran)
-    .skip(ran2)
-    .exec((err, results) => {
-      if (err) {
-        throw err;
-      } else {
-        res.status(200);
-        console.log(results);
-        res.send(results);
-      }
-    });
+const getReviews = app.get('/reviews/:productId', (req, res) => {
+  const query = 'SELECT * FROM reviews';
+  // fix the route to only select the reviews that match the product id
+  pool.query(query, (err, data) => {
+    if (data) {
+      // console.log(data.rows, 'found');
+      res.send(data.rows);
+    } else {
+      // console.log(err, 'doesnt work');
+      res.status(400).send(err);
+    }
+  });
 
 });
 
