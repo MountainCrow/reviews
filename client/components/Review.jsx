@@ -108,17 +108,17 @@ class Review extends React.Component {
 
 
   render(){
-    const { stars, postDate, title, description, firstName, lastName } = this.props.allReviews;
-    const lastInit = lastName.split('')[0].toUpperCase();
+    const { stars, postdate, title, description, firstname, lastname } = this.props.allReviews;
+    const lastInit = lastname.split('')[0].toUpperCase();
     let { helpful } = this.state;
     return(
       <ReviewContainer className='indiv-review'>
         <Star id='star-rating'>{this.createStars(stars)}</Star>
-        <Date>{moment(postDate).format("MMM Do YY")}</Date>
+        <Date>{moment(postdate).format("MMM Do YY")}</Date>
         <Title className="title">{title}</Title>
         <Description>{description}</Description>
-        <Title>{ `${firstName} ${lastInit}.` }</Title>
-        <Button className='helpful-btn' id={firstName} onClick={this.handleClick}>Helpful({helpful})</Button>
+        <Title>{ `${firstname} ${lastInit}.` }</Title>
+        <Button className='helpful-btn' id={firstname} onClick={this.handleClick}>Helpful({helpful})</Button>
       </ReviewContainer>
     )
   }
