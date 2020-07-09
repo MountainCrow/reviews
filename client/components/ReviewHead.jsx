@@ -92,13 +92,12 @@ const SortHolder = styled.div`
   align-items:flex-end;
   width:150px
 `;
-
+// for some reason this button is on top of the stars, need to fix
 const SortBtn = styled.div`
   margin-bottom: 5px;
   display:flex;
   justify-content:center;
   align-content:center;
-
   &:hover{
     color:firebrick;
   }

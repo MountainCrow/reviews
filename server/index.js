@@ -22,7 +22,12 @@ const status = app.get('/', (req, res) => {
 
 // test this for return object type or length
 const getReviews = app.get('/reviews/:productId', (req, res) => {
-  const query = 'SELECT * FROM reviews';
+  const query = `SELECT
+  *
+  FROM
+  reviews_table
+  WHERE
+  product_id = ${req.params.productId}`;
   // fix the route to only select the reviews that match the product id
   pool.query(query, (err, data) => {
     if (data) {
