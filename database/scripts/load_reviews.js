@@ -1,17 +1,18 @@
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const faker = require('faker');
 
 const csvWriter = createCsvWriter({
   path: '../data/data.csv',
   header: [
-    '_id',
-    'product_id',
-    'stars',
-    'title',
-    'product_type',
-    'description',
-    'lastname',
-    'firstname',
-    'postdate',
+    { id: '_id', title: '_id' },
+    { id: 'product_id', title: 'product_id' },
+    { id: 'stars', title: 'stars' },
+    { id: 'title', title: 'title' },
+    { id: 'product_type', title: 'product_type' },
+    { id: 'description', title: 'description' },
+    { id: 'lastname', title: 'lastname' },
+    { id: 'firstname', title: 'firstname' },
+    { id: 'postdate', title: 'postdate' },
   ],
 });
 let id = 5;
@@ -51,28 +52,28 @@ const suffixes = {
 };
 let records = [];
 
-while ( id < 200) { // populating i rows of data and adding to csv
-  let row = []; // make sure items are added in the same order as they are in the header
-  row.push(id); // adding the id (represented by i) to the row
+while (id < 200) { // populating i rows of data and adding to csv
+  let row = {}; // make sure items are added in the same order as they are in the header
+  row._id = id; // adding the id (represented by i) to the row
   const productId = Math.floor(Math.random() * 100); // random integer between 0 and 100 for the productId
-  row.push(productId);
+  row.product_id = productId;
   const starRating = Math.floor(Math.random() * 4) + 1; // random number from 0 to 4 plus one so now its from 1 to 5
-  row.push(starRating);
-  const title = 'sample product review'; // generate random text here just using a fixed string for now
-  row.push(title);
+  row.stars = starRating;
+  const title = faker.lorem.sentence(); // generate random text here just using a fixed string for now
+  row.title = title;
   const prodType = productTypes[productId % 3]; // choose from one of 3 product types depending on the id, makes it consistent for all products with the same id
-  row.push(prodType);
-  const description = 'sample product description'; // generate random text here just using a fixed string for now
-  row.push(description);
-  const lastName = 'Doe'; // generate random text here just using a fixed string for now
-  row.push(lastName);
-  const firstName = 'Joe'; // generate random text here just using a fixed string for now
-  row.push(firstName);
+  row.product_type = prodType;
+  const description = faker.lorem.paragraph(); // generate random text here just using a fixed string for now
+  row.description = description;
+  const lastName = faker.name.lastName(); // generate random text here just using a fixed string for now
+  row.lastname = lastName;
+  const firstName = faker.name.firstName(); // generate random text here just using a fixed string for now
+  row.firstname = firstName;
   const day = (Math.floor(Math.random() * 29) + 1).toString(); // random number 1 to 30 as a string
   const month = months[Math.floor(Math.random() * 3)]; // random month from the array
   const suffix = suffixes[day]; // gets the correct suffix for the randomly picked day
   const postDate = `${month} ${day}${suffix} 2020`; // put together the randomly generated data as a string as we want it, need to change 5th to the random day with the correct suffix;
-  row.push(postDate);
+  row.postdate = postDate;
   records.push(row); // add the row to the records
   id += 1; // increment the id by 1
 }
