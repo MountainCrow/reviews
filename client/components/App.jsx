@@ -25,7 +25,7 @@ class App extends React.Component {
     this.state = {
       reviews:[],
       sortBy: "Top Rated",
-      productId: 3, // I added this for the purposes of the route
+      productId: 72190, // I added this for the purposes of the route
     };
 
     this.giveAllRatings = this.giveAllRatings.bind(this);

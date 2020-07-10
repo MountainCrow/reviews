@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const Promise = require('bluebird');
+const morgan = require('morgan');
 const { ReviewModel, db } = require('../database/db.js');
 const pool = require('../database/postgres-db.js');
 
@@ -15,6 +16,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
+
+app.use(morgan('dev'));
 
 // Promise.promisifyAll(pool());
 
@@ -31,13 +34,23 @@ const getReviews = app.get('/reviews/:productId', (req, res) => {
   reviews_table
   WHERE
   product_id = ${req.params.productId}`;
-  // fix the route to only select the reviews that match the product id
+
   pool.query(query, (err, data) => {
     if (data) {
-      // console.log(data.rows, 'found');
       res.send(data.rows);
     } else {
-      // console.log(err, 'doesnt work');
+      res.status(400).send(err);
+    }
+  });
+});
+
+app.get('/topOnePercent', (req, res) => {
+  const query = 'SELECT * FROM reviews_table WHERE _id BETWEEN 1 AND 10000';
+
+  pool.query(query, (err, data) => {
+    if (data) {
+      res.send(data.rows);
+    } else {
       res.status(400).send(err);
     }
   });
@@ -58,34 +71,6 @@ app.post('/writeReview', (req, res) => {
     })
     .catch((err) => console.error(err.stack));
 });
-//
-//   pool.query('SELECT MAX(_id) from reviews_table')
-//     .then((data) => {
-//       const maxIndex = Number(data.rows[0].max) + 1;
-//     //   return maxIndex;
-//     // })
-//     // .then((index) => {
-//       pool.query(
-//         `INSERT INTO reviews_table(_id, description, firstname, lastname, postdate, product_id, stars, title, product_type)VALUES(${maxIndex}, 'Cool Product 3','Oliver', 'Cool', 'Jun 15th 2020', 3, 4, 'product is decent', 'bag')`)// ,
-//       //   (err, response) => {
-//       //     console.log(err, response);
-//       //     res.status(200);
-//       //     pool.end();
-//       //   },
-//       // );
-//       .then((data) => {
-//         console.log(data);
-//         res.send(data);
-//       })
-//       .catch(e=> console.error(e.stack));
-//   })
-//   .catch(e=> console.error(e.stack));
-// });
-// //     })
-// //     .catch((err) => {
-// //       res.send(err);
-// //     });
-// // });
 
 app.listen(PORT, () => console.log('Listening on Port 3003'));
 
