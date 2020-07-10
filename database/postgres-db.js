@@ -1,11 +1,3 @@
-// let months = ['January', 'February','March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-// this.toString();
-// let splitDate = this.split('/');
-// let monthNum = parseInt(splitDate[0]);
-// let month = months[monthNum];
-// let date = month + ' ' + parseInt(splitDate[1]) + ' ' + '2020';
-// return date;
-// maybe helpful for converting datetime into string
 const {Pool, Client} = require('pg');
 
 const pool = new Pool({
@@ -25,7 +17,7 @@ pool.connect()
   });
 
 // pool.query(
-//   "INSERT INTO public.reviews(_id, description, firstname, lastname, postdate, product_id, stars, title, product_type)VALUES('a1', 'Cool Product','Max', 'Rosenberg', 'Apr 12th 2020', 20, 4, 'product review', 'bag')",
+//   "INSERT INTO reviews_table(_id, description, firstname, lastname, postdate, product_id, stars, title, product_type)VALUES(4, 'Cool Product 3','Oliver', 'Cool', 'Jun 15th 2020', 3, 4, 'product is decent', 'bag')",
 //   (err, res) => {
 //     console.log(err, res);
 //     pool.end();

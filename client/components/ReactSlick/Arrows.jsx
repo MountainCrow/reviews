@@ -21,6 +21,7 @@ function SampleNextArrow(props) {
 }
 
 function SamplePrevArrow(props) {
+  // need to make sure that these move as the list gets bigger
   const { className, style, onClick } = props;
   return (
     <Arrow
