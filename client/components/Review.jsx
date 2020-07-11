@@ -111,6 +111,9 @@ class Review extends React.Component {
     const { stars, postdate, title, description, firstname, lastname } = this.props.allReviews;
     const lastInit = lastname.split('')[0].toUpperCase();
     let { helpful } = this.state;
+    // let date = new Date(postdate);
+    // console.log('date is', date);
+    // fix this date thing when I get the chance
     return(
       <ReviewContainer className='indiv-review'>
         <Star id='star-rating'>{this.createStars(stars)}</Star>

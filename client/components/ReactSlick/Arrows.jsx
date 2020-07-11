@@ -29,7 +29,8 @@ function SamplePrevArrow(props) {
       style={{
         ...style,
         position:"absolute",
-        left:"77%",
+        left:"20%",
+        // left: 77%, see if I can get this to dynamically move
         top:"104%",
         width: "auto",
         zIndex:"1"
