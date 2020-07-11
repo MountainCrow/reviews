@@ -2,7 +2,7 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const faker = require('faker');
 
 const csvWriter = createCsvWriter({
-  path: '../data/data.csv',
+  path: '../data.csv',
   header: [
     { id: '_id', title: '_id' },
     { id: 'product_id', title: 'product_id' },
@@ -15,7 +15,7 @@ const csvWriter = createCsvWriter({
     { id: 'postdate', title: 'postdate' },
   ],
 });
-let id = 5;
+let id = 0;
 const productTypes = ['bag', 'tent', 'coat'];
 const months = ['Apr', 'May', 'Jun', 'Jul'];
 const suffixes = {
@@ -52,9 +52,9 @@ const suffixes = {
 };
 let records = [];
 
-while (id < 200) { // populating i rows of data and adding to csv
+while (id < 1000) { // populating i rows of data and adding to csv
   let row = {}; // make sure items are added in the same order as they are in the header
-  row._id = id; // adding the id (represented by i) to the row
+  // row._id = id; // adding the id (represented by i) to the row // not needed for mongo
   const productId = Math.floor(Math.random() * 100); // random integer between 0 and 100 for the productId
   row.product_id = productId;
   const starRating = Math.floor(Math.random() * 4) + 1; // random number from 0 to 4 plus one so now its from 1 to 5
@@ -78,7 +78,7 @@ while (id < 200) { // populating i rows of data and adding to csv
   id += 1; // increment the id by 1
 }
 
-console.log('start writing recors');
+console.log('start writing records');
 csvWriter.writeRecords(records)
   .then(() => {
     console.log('...Done');

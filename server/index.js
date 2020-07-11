@@ -6,6 +6,7 @@ const Promise = require('bluebird');
 const morgan = require('morgan');
 const { ReviewModel, db } = require('../database/db.js');
 const pool = require('../database/postgres-db.js');
+// require('../database/scripts/load_reviews.js');
 
 const PORT = 3003;
 
@@ -45,7 +46,7 @@ const getReviews = app.get('/reviews/:productId', (req, res) => {
 });
 
 app.get('/topOnePercent', (req, res) => {
-  const query = 'SELECT * FROM reviews_table WHERE _id BETWEEN 1 AND 10000';
+  const query = 'SELECT * FROM reviews_table WHERE _id BETWEEN 1 AND 1000';
 
   pool.query(query, (err, data) => {
     if (data) {
