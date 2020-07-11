@@ -52,10 +52,10 @@ const suffixes = {
 };
 let records = [];
 
-while (id < 1000) { // populating i rows of data and adding to csv
+while (id < 900000) { // populating i rows of data and adding to csv
   let row = {}; // make sure items are added in the same order as they are in the header
   // row._id = id; // adding the id (represented by i) to the row // not needed for mongo
-  const productId = Math.floor(Math.random() * 100); // random integer between 0 and 100 for the productId
+  const productId = Math.floor(Math.random() * 200000); // random integer between 0 and 100 for the productId
   row.product_id = productId;
   const starRating = Math.floor(Math.random() * 4) + 1; // random number from 0 to 4 plus one so now its from 1 to 5
   row.stars = starRating;
