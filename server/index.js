@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const Promise = require('bluebird');
 const morgan = require('morgan');
-const { ReviewModel, db } = require('../database/db.js');
+// const { ReviewModel, db } = require('../database/db.js');
 const pool = require('../database/postgres-db.js');
 const mongoose = require('mongoose');
 // require('../database/scripts/load_reviews.js');
@@ -73,31 +73,31 @@ app.post('/writeReview', (req, res) => {
     .catch((err) => console.error(err.stack));
 });
 
-// mongo routes
+// mongo routes, not used because I have chosen to go with postgres as my database
 
-app.get('/mongo/reviews/:productId', (req, res) => {
-  ReviewModel.find({ product_id: req.params.productId })
-    .then((data) => {
-      // console.log('found data', data);
-      res.send(data);
-    })
-    .catch((err) => {
-      res.error(err);
-    });
-});
+// app.get('/mongo/reviews/:productId', (req, res) => {
+//   ReviewModel.find({ product_id: req.params.productId })
+//     .then((data) => {
+//       // console.log('found data', data);
+//       res.send(data);
+//     })
+//     .catch((err) => {
+//       res.error(err);
+//     });
+// });
 
-app.get('/mongo/topOnePercent', (req, res) => {
-  ReviewModel.find({}).limit(50000)
-  // .skip to go to the middle
-    .then((data) => {
-      // console.log('found data', data.length);
-      res.send(data);
-    })
-    .catch((err) => {
-      res.error(err);
-    });
+// app.get('/mongo/topOnePercent', (req, res) => {
+//   ReviewModel.find({}).limit(50000)
+//   // .skip to go to the middle
+//     .then((data) => {
+//       // console.log('found data', data.length);
+//       res.send(data);
+//     })
+//     .catch((err) => {
+//       res.error(err);
+//     });
 
-});
+// });
 
 app.listen(PORT, () => console.log('Listening on Port 3003'));
 
