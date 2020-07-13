@@ -10,9 +10,9 @@ describe('<Review /> React Component Testing', () => {
       stars: 3,
       title: "Fake Title",
       description: "Fake Description",
-      firstName: "Enzyme",
-      lastName: "Sucks",
-      date: "July 19 1993"
+      firstname: "Enzyme",
+      lastname: "Sucks",
+      postdate: "July 19 1993"
     }
   }
   test('renders the review to the dom', () => {
