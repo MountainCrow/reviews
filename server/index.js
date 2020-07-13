@@ -57,7 +57,6 @@ app.get('/topOnePercent', (req, res) => {
       res.status(400).send(err);
     }
   });
-
 });
 
 app.post('/writeReview', (req, res) => {
