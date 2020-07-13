@@ -11,11 +11,13 @@
     "cypress-open": "cypress open"
   },
   "dependencies": {
+    "@newrelic/native-metrics": "^5.2.0",
     "axios": "^0.19.2",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "csv-writer": "^1.6.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "jquery": "^3.5.1",
@@ -23,6 +25,7 @@
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.19",
     "morgan": "^1.10.0",
+    "newrelic": "^6.11.0",
     "pg": "^8.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

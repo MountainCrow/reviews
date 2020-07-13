@@ -1,3 +1,5 @@
+require('dotenv').config();
+require('newrelic');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -9,7 +11,7 @@ const pool = require('../database/postgres-db.js');
 const mongoose = require('mongoose');
 // require('../database/scripts/load_reviews.js');
 
-const PORT = 3003;
+const PORT = process.env.SERVER_PORT;
 
 const app = express();
 
@@ -98,6 +100,6 @@ app.post('/writeReview', (req, res) => {
 
 // });
 
-app.listen(PORT, () => console.log('Listening on Port 3003'));
+app.listen(PORT, () => console.log('Listening on Port', PORT));
 
 module.exports = { app, getReviews };
