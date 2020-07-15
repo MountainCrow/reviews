@@ -3,14 +3,7 @@ config:
   phases:
     - duration: 1
       arrivalRate: 100
-  # defaults:
-  #   headers:
-  #     x-my-service-auth: '987401838271002188298567'
 scenarios:
   - flow:
     - get:
         url: "/reviews/239"
-    # - get:
-    #     url: "/topOnePercent"
-    # - post:
-    #     url: "/writeReview"
