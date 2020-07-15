@@ -11,7 +11,7 @@ const pool = require('../database/postgres-db.js');
 const mongoose = require('mongoose');
 // require('../database/scripts/load_reviews.js');
 
-const PORT = process.env.SERVER_PORT;
+const PORT = process.env.SERVER_PORT || 3003;
 
 const app = express();
 
