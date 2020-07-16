@@ -34,8 +34,8 @@ class App extends React.Component {
 
   componentDidMount() {
 
-    axios.get(`http://127.0.0.1:3003/reviews/${this.state.productId}`)
-    // axios.get(`http://54.67.41.116/reviews/${this.state.productId}`)
+    // axios.get(`http://127.0.0.1:3003/reviews/${this.state.productId}`)
+    axios.get(`http://54.67.41.116/reviews/${this.state.productId}`)
     // need to give a productId for the route to work
     // using the postgres route
       .then((results) => {
