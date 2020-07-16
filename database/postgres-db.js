@@ -4,7 +4,7 @@ const {Pool, Client} = require('pg');
 const pool = new Pool({
   user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'gomets1',
-  host: process.env.DB_HOST || 'ec2-54-193-186-65.us-west-1.compute.amazonaws.com',
+  host: process.env.DB_HOST || 'ec2-13-57-242-35.us-west-1.compute.amazonaws.com',
   port: process.env.DB_PORT || 5432,
   database: process.env.DB_NAME || 'reviews_db',
 });
