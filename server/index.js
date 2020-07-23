@@ -8,7 +8,7 @@ const Promise = require('bluebird');
 const morgan = require('morgan');
 // const { ReviewModel, db } = require('../database/db.js');
 const pool = require('../database/postgres-db.js');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 // require('../database/scripts/load_reviews.js');
 
 const PORT = process.env.SERVER_PORT || 3003;
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 
-Promise.promisifyAll(mongoose);
+// Promise.promisifyAll(mongoose);
 
 const status = app.get('/', (req, res) => {
   res.status(200);
