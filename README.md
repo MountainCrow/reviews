@@ -19,7 +19,7 @@ This repository particularly focuses on the reviews module of the MountainCrow a
 ## Requirements
 
 Node 6.13.0
-Nodemon
+Nodemon 2.0.4
 
 ## Development
 
